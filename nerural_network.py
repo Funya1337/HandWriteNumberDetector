@@ -12,8 +12,8 @@ class neuralNetwork:
         self.who = numpy.random.normal(0.0, pow(self.onodes, - 0.5), (self.onodes, self.hnodes))
         self.lr = learningrate
         self.activation_function = lambda x: scipy.special.expit(x)
-        
         pass
+        
     def train(self, inputs_list, target_list):
         inputs = numpy.array(inputs_list, ndmin = 2).T
         targets = numpy.array(target_list, ndmin = 2).T
