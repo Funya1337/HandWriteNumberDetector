@@ -13,7 +13,7 @@ class neuralNetwork:
         self.lr = learningrate
         self.activation_function = lambda x: scipy.special.expit(x)
         pass
-        
+
     def train(self, inputs_list, target_list):
         inputs = numpy.array(inputs_list, ndmin = 2).T
         targets = numpy.array(target_list, ndmin = 2).T
@@ -63,8 +63,10 @@ def mnist_test_data(n):
     test_data_file = open("mnist_dataset/mnist_test_10.csv", "r")
     test_data_list = test_data_file.readlines()
     test_data_file.close()
-    all_values = test_data_list[0].split(',')
+    all_values = test_data_list[3].split(',')
     res = n.query((numpy.asfarray(all_values[1:])) / 255.0 * 0.99) + 0.01
+
+    print(test_data_list)
 
     print('Expected result:', all_values[0])
     print('Prediction results:')
@@ -74,5 +76,8 @@ def mnist_test_data(n):
     plt.imshow(image_array, cmap='Greys', interpolation='None')
     plt.show()
 
+def hand_write_data_check(data):
+    res = n.query((numpy.asfarray(data)) / 255.0 * 0.99) + 0.01
+    print('123123123', res)
+
 mnist_train_data(n)
-mnist_test_data(n)
